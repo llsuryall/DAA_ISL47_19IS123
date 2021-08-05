@@ -1,6 +1,5 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include<stdbool.h>
 
 int * inpIntArray(int n){
 	if(n>0){
@@ -28,20 +27,18 @@ void endl(){
 	printf("\n");
 }
 
-void bubble_sort(int * ar,int n){
-	_Bool flag=true;
-	int temp=0;
-	while(flag){
-		flag=false;
-		for(int i=1;i<n;i++){
-			if(ar[i-1]>ar[i]){
-				temp=ar[i];
-				ar[i]=ar[i-1];
-				ar[i-1]=temp;
-				flag=true;
+void selection_sort(int * ar,int n){
+	int min_pos,temp;
+	for(int base=0;base<n-1;base++){
+		min_pos=base;
+		for(int i=base+1;i<n;i++){
+			if(ar[i]<ar[min_pos]){
+				min_pos=i;
 			}
 		}
-		n--;
+		temp=ar[min_pos];
+		ar[min_pos]=ar[base];
+		ar[base]=temp;
 	}
 }
 
@@ -54,7 +51,7 @@ void main(){
 		printf("Invalid input!");endl();
 		return;
 	}
-	bubble_sort(ar,n);
+	selection_sort(ar,n);
 	printf("Sorted array-\n-> ");
 	print_IntArr(ar,n);endl();
 }
