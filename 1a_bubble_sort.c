@@ -57,4 +57,5 @@ void main(){
 	bubble_sort(ar,n);
 	printf("Sorted array-\n-> ");
 	print_IntArr(ar,n);endl();
+	free(ar);
 }
