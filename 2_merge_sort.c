@@ -1,6 +1,6 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
+#include<stdio.h> //for input/output
+#include<stdlib.h> // for malloc
+#include<string.h> // for memcpy
 
 
 // Input 'n' elements into an array and return the base address

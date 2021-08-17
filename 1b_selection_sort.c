@@ -1,5 +1,5 @@
-#include<stdio.h>
-#include<stdlib.h>
+#include<stdio.h> //for input/output
+#include<stdlib.h> // for malloc
 
 // Input 'n' elements into an array and return the base address
 int * inpIntArray(int n){
