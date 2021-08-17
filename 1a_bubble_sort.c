@@ -1,7 +1,8 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<stdbool.h>
+#include<stdio.h> //for input/output
+#include<stdlib.h> // for malloc
+#include<stdbool.h> // for _Bool
 
+// Input 'n' elements into an array and return the base address
 int * inpIntArray(int n){
 	if(n>0){
 		printf("Enter the elements of array -\n-> ");
@@ -15,6 +16,7 @@ int * inpIntArray(int n){
 	}
 }
 
+// Print array of till 'n' from base address
 void print_IntArr(int * ar,int n){
 	if(n>0){
 		for(int i=0;i<n-1;i++){
@@ -24,23 +26,42 @@ void print_IntArr(int * ar,int n){
 	}
 }
 
+// Print newline character
 void endl(){
 	printf("\n");
 }
 
+
+// Bubble sort array starting from base address 'ar' till 'n' elements
 void bubble_sort(int * ar,int n){
-	_Bool flag=true;
-	int temp=0;
+	_Bool flag=true; //initially set flag to be true
+	int temp=0; //declare temp variable optionally inititalize it
 	while(flag){
 		flag=false;
-		for(int i=1;i<n;i++){
-			if(ar[i-1]>ar[i]){
+		/* 
+		set 'flag' to be false inside loop
+		so that if the inner 'if' statement doesn't run even once it should exit
+		as it implies loop is already sorted
+		OR
+		if limit for 'n' inside 'for' loop is reached the inner statements won't run
+		so loop will exit
+		*/
+		for(int i=1;i<n;i++){// start from i=1, as we are comparing previous element with current one
+			/* 
+			we need bigger elements on the right(ascending)
+			so we swap if previous element is greater
+			*/
+			if(ar[i-1]>ar[i]){ 
 				temp=ar[i];
 				ar[i]=ar[i-1];
 				ar[i-1]=temp;
 				flag=true;
 			}
 		}
+		/*
+		decrement 'n', as we know that the biggest element will bubble to the top(or end of array) in first iteration
+		so we don't need to check the last element as it is already sorted 
+		*/
 		n--;
 	}
 }
@@ -57,5 +78,5 @@ void main(){
 	bubble_sort(ar,n);
 	printf("Sorted array-\n-> ");
 	print_IntArr(ar,n);endl();
-	free(ar);
+	free(ar); // deallocate the heap memory used for 'ar'
 }
